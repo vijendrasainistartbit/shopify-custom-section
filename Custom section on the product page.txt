@@ -1,0 +1,68 @@
+<div class="tp-how-it-work-st">
+<h3 class="tp-how-it-work-st-heading">{{ section.settings.hiw_heading }}</h3>
+  <div class="tp-how-it-work-blocks">
+  	{% for block in section.blocks %}
+    <div class="tp-how-it-work-block">
+      <div class="tp-how-it-work-img">
+        <img src="{{ block.settings.hiw_gift_image | img_url: 'original' }}">
+      </div>      
+      <h4>{{ block.settings.hiw_gift_heading }}</h4>
+      <p>{{ block.settings.hiw_gift_subheading }}</p>
+    </div>    	
+    {% endfor %}
+  </div>
+  <a class="tp-how-it-work-st-button" href="{{ section.settings.hiw_button_url }}">{{ section.settings.hiw_button_heading }}</a>
+</div>
+
+{% schema %}
+  {
+    "name": "How it works",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "text",
+        "id": "hiw_heading",
+        "label": "Heading"
+      },
+	  {
+        "type": "text",
+        "id": "hiw_button_heading",
+        "label": "Button Heading"
+      },
+	  {
+        "type": "url",
+        "id": "hiw_button_url",
+        "label": "Button Link"
+      },
+      {
+         "type": "color",
+         "id": "hiw_background_color",
+         "label": "Background color",
+         "default": "#ebebeb"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",		
+        "name": "How it works blocks",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "hiw_gift_image",
+            "label": "Gift Image"
+          },
+		  {
+            "type": "text",
+            "id": "hiw_gift_heading",
+            "label": "Gift Heading"
+          },
+		  {
+            "type": "richtext",
+            "id": "hiw_gift_subheading",
+            "label": "Gift Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
